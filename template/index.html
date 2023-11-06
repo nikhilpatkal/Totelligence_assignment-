@@ -1,0 +1,196 @@
+{%load static %}
+<html>
+  <head>
+    <title>Ecommers Web</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/brands.min.css"
+      integrity="sha512-W/zrbCncQnky/EzL+/AYwTtosvrM+YG/V6piQLSe2HuKS6cmbw89kjYkp3tWFn1dkWV7L1ruvJyKbLz73Vlgfg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
+  </head>
+  <body>
+    <div class="n1">GOODS STORE</div>
+
+    <div class="container-fluid">
+      <div class="slider">
+        <button style="padding: 7px; border: none; font-size: large">
+          <a href="/home/"style="text-decoration:none;color:black">Home</a>
+        </button>
+        <button style="padding: 7px; border: none; font-size: large">
+           <a href="/Feedback/"style="text-decoration:none;color:black">Feedback</a>
+        </button>
+        <button style="padding: 7px; border: none; font-size: large">
+          WHY US ?
+        </button>
+     
+        
+
+        <div>
+          <form method="POST"  action="/search/" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input
+              type="text" name="TEXT_FIELD"
+              style="
+                width: 230px;
+                height: 36px;
+                border-radius: 8px;
+                border: 1px solid black;
+                font-size: large;
+                font-weight: 600;
+                padding-left: 14px;
+              "
+              placeholder="Search.."
+            />
+            <button 
+              style="
+                padding: 2px;
+                font-size: large;
+                border-radius: 10px;
+                padding-left: 5px;
+                padding-right: 6px;
+              "
+            >Search
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <div
+        id="productCarousel"
+        class="carousel slide"
+        data-bs-ride="carousel"
+        style="margin-right: 30px; margin-left: 30px"
+      >
+        <div class="carousel-inner" style="border-radius: 20px">
+          <!-- Carousel Items -->
+          <div class="carousel-item active">
+            <div
+              style="
+                background-color: black;
+                width: 100%;
+                color: white;
+                display: flex;
+                flex-wrap: wrap;
+                padding-bottom: 30px;
+              "
+            >
+              <div class="car_cont">
+                <p
+                  style="
+                    padding: 100 0 0 140;
+                    font-size: xx-large;
+                    font-weight: bolder;
+                  "
+                >
+                  Welcome To Our<br/>
+                  Goods Store
+                </p>
+                <p style="padding: 30 0 0 140; font-size: large">
+                  Sequi perspiciatis nulla reiciendis, rem, tenetur impedit,
+                  eveniet non necessitatibus error distinctio mollitia suscipit.
+                  Nostrum fugit doloribus consequatur distinctio esse, possimus
+                  maiores aliquid repellat beatae cum, perspiciatis enim,
+                  accusantium perferendis.
+                </p>
+                <button
+                  style="
+                    margin: 20 0 0 135px;
+                    padding: 10 20 10 20;
+                    color: black;
+                    font-size: medium;
+                    border-radius: 6px;
+                    font-weight: bold;
+                  "
+                >
+                  Contact Us
+                </button>
+              </div>
+              <div style="width: 40%; float: left" class="a1">
+                <img
+                  src="{%static 'img/shop1.png'%}"
+                  style="width: 100%; height: 100%"
+                />
+              </div>
+            </div>
+          </div>
+        
+          </div>
+        </div>
+
+        <!-- Carousel Controls -->
+        <a
+          class="carousel-control-prev"
+          href="#productCarousel"
+          role="button"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </a>
+        <a
+          class="carousel-control-next"
+          href="#productCarousel"
+          role="button"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="container-fluid" style="margin-top: 80px">
+      <div class="headding">LATEST PRODUCTS</div>
+
+      <div class="card_section"style="margin-bottom:90px">
+        {% for info in card_posts %}
+        <div class="card" >
+          <h1 style="color: black; font-weight: bold; padding: 7px">
+            {{ info.product_name }}
+          </h1>
+          <img
+            src="{{ info.product_image.url }}"
+            style="width: 70%; height: 70%"
+          />
+          <h3>
+            Price <span style="color: red">${{ info.product_price }}  </span>
+          </h3>
+          <button style="width: 90%;height: 30px;font-size: large;border: 1px solid black;font-weight: 500;margin-bottom: 9px;"><a href="/Bye_page/{{info.id}}"style="text-decoration: none;color:black">Bye New</a></button>
+      
+        </div>
+        {% endfor %}
+      
+    </div>
+    </div>
+  
+    <div style="text-align: center;margin-top: 20px;">
+      <button style="padding: 10px 20px 10px 20px;padding-right:20px;font-size: large;border-radius: 7px;background-color: red;border: 0px;"><a href="/all_product/"style="color: white;text-decoration:none">View All Products</a></button>
+    </div>
+
+    <!-- Include Bootstrap JS and Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@2.9.4/dist/umd/popper.min.js"></script>
+  </body>
+</html>

@@ -1,0 +1,132 @@
+
+
+
+{% include "menu.html" %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Page Title</title>
+    <meta name="description" content="Description of your page">
+    <meta name="keywords" content="your, keywords, here">
+
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/brands.min.css"
+      integrity="sha512-W/zrbCncQnky/EzL+/AYwTtosvrM+YG/V6piQLSe2HuKS6cmbw89kjYkp3tWFn1dkWV7L1ruvJyKbLz73Vlgfg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+
+
+    <!-- Add any external CSS files here -->
+    <link rel="stylesheet" type="text/css" href="styles.css">
+  
+</head>
+<body>
+ 
+
+       
+
+
+
+        </div>
+        {% endfor %}
+
+        
+
+    </div> -->
+ 
+        <section>
+                <div class="container ">
+                    <div class="row">
+                        {% for info in card_posts %}
+                        <div class="col-md-6 col-12 ">
+                            <div class="card-body"style="margin-top:40px">
+                                <!-- <h5 class="code">product Code:123456</h5> -->
+                                <img class="img1" src="{{ info.product_image.url }}"style="width:80%;height:500px">
+                            </div>
+
+                            <!-- <h1 >Description:{{info.description}}</h1>
+                            <h2 >Brand :{{info.brand}}</h2>
+                            <h2>Size :{{info.size}}</h2>
+                            <h2>color :{{info.color}}</h2>
+                            <h2>Price : Rs {{info.product_price}}</h2>
+                            <input type="number" placeholder="1" style="font-size: medium;"> -->
+
+                            
+                           
+                        </div>
+                        <div class="col-md-6 col-12 ">
+                            <div class="card-body border p-5 " style="font-size: large;">
+                                <h3 class="">{{info.category}}</h3>
+                                <!-- <h1 style="color:rgb(208, 98, 182)">Light Pink Top for Women</h1> -->
+                                <p class="fs-10">₹{{info.product_price}}
+                                    <span class="cut"><del>₹50</del> <span class="off">13% off</span></span>
+                                </p>
+                                <button class="btn btn-success mt-2 btn-sm " style="border-radius: 15px;">3.6 <i
+                                        class="fa-solid fa-star"></i></button><span class="ratiing">11385 Ratings
+                                </span>
+        
+                                <p class="size"> <i class="fa-solid fa-check"></i> ₹50 discount on 1st order </p>
+                                <hr>
+        
+                                
+        
+        
+                                <p class="heart" style="float: left">
+                                    <a href="ecommerce_web_cart.html"><button
+                                            class="btn btn-light text-dark border mt-2 btn-md sizebtn12 " style="font-size: medium;"> <i
+                                                class="fa-solid fa-cart-shopping"> </i> Add to Cart
+                                        </button> </a>
+        
+                                </p>
+                                <p class="cart12 float-left">
+                                    <a href="/address/"> <button
+                                            class="btn btn-info text-white border mt-2 btn-md sizebtn12 " style="font-size: medium;margin-left: 20px;"> <i
+                                                class="fa-solid fa-angles-right"> </i> Buy Now
+                                        </button> </a>
+                                </p>
+                                <p style="color: grey;margin-top: 30px;">PRODUCT DETAILS</p>
+                                <p>
+                                    {{info.description}}
+                                </p>
+                                <p>
+                                    <h2>Size :{{info.size}}</h2>
+                                </p>
+                                <!-- <p style="color: grey;margin-top: 40px;">MATERIAL & CARE</p>
+                                <li>Cotton</li>
+                                <li>Machine-Wash</li> -->
+                                <p style="color: grey;margin-top: 40px;">SOLD BY</p>
+                                <h5 style="color: #07a696">Wind It Store,Stillwater</h5>
+                                <li>90% Positive Feedback</li>
+                                <li>63 Products</li>
+                                <li>All Products comes With 3 Month Warrenty</li>
+                            </div>
+                        </div>
+                        </div>
+                        {% endfor %}
+                        </div>
+                       
+            </section>
+        
+    
+</body>
+</html>

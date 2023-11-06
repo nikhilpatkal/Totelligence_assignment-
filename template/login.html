@@ -1,0 +1,152 @@
+{%load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-commerce Login & Sign Up</title>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+           
+            background-image: url("{% static 'ww.jpg' %}");
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .login-container {
+            background-color: rgba(128, 140, 140, 0.7);
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            max-width: 400px;
+            width: 30%;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .form-group {
+            text-align: left;
+            margin: 10px 0;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+        }
+
+        input {
+            width: 90%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .toggle-bar {
+            margin-top: 20px;
+        }
+
+        .toggle-bar a {
+            text-decoration: none;
+            color: #007bff;
+            margin: 0 10px;
+            cursor: pointer;
+        }
+
+        .signup-form {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1>Login</h1>
+        <form class="login-form" action="/login_view/" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit">Login</button>
+        </form>
+        
+        <form class="signup-form" method="post" action="/regestartion/">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="signup-username">Username</label>
+                <input type="text" id="signup-username" name="signup-username" required>
+            </div>
+            <div class="form-group">
+                <label for="signup-username">Email</label>
+                <input type="text" id="signup-username" name="signup-Email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="signup-username">Mobile No</label>
+                <input type="text" id="signup-username" name="signup-Mobile" required>
+            </div>
+            <div class="form-group">
+                <label for="signup-username">Address</label>
+                <input type="text" id="signup-username" name="signup-Address" required>
+            </div>
+
+            <div class="form-group">
+                <label for="signup-password">Password</label>
+                <input type="password" id="signup-password" name="signup-password" required>
+            </div>
+            <button type="submit">Sign Up</button>
+        </form>
+
+        <div class="toggle-bar">
+            <a id="toggle-signup">Sign Up ?</a>
+        </div>
+        <div class="toggle-bar">
+            <a id="toggle-signIn">Sign In</a>
+        </div>
+    </div>
+
+    <script>
+        const loginForm = document.querySelector('.login-form');
+        const signupForm = document.querySelector('.signup-form');
+        const toggleSignup = document.getElementById('toggle-signup');
+        const toggleSignIn = document.getElementById('toggle-signIn');
+        toggleSignIn.style.display='none'
+
+        toggleSignup.addEventListener('click', function() {
+            loginForm.style.display = 'none';
+            toggleSignIn.style.display=''
+            toggleSignup.style.display='none'
+            signupForm.style.display = 'block';
+        });
+
+        toggleSignIn.addEventListener('click', function() {
+            
+            signupForm.style.display = 'none';
+            loginForm.style.display = '';
+            toggleSignup.style.display=''
+            toggleSignIn.style.display='none'
+        });
+    </script>
+</body>
+</html>
